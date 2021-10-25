@@ -32,7 +32,7 @@ double	get_real(int x, int image_width, double min_real, double max_real)
 	// [0, max_real - min_real] - val * range / width
 	// [min_real, max_real] - last_step = min_real
 
-	image_width = image_width * 2;
+	image_width = image_width * 8;
 
 	return (x * (range / image_width) + min_real);
 }
@@ -43,7 +43,7 @@ double	get_imgn(int y, int image_height, double min_imgn, double max_imgn)
 
 	range = max_imgn - min_imgn;
 
-	image_height = image_height * 2;
+	image_height = image_height * 8;
 
 	return (y * (range / image_height) + min_imgn);
 }
@@ -98,6 +98,8 @@ int	mainXXX(void)
 	mlx_loop(window.mlx);
 	return (0);
 }
+
+
 //int	main(int argc, char *argv[])
 int	main(void)
 {
@@ -143,11 +145,22 @@ int	main(void)
 	image_width = 500;
 	image_height = 500;
 	maxN = 255;
-	min_real = -1.5;
-	max_real = 0.7;
-	min_imgn = -1.0;
-	max_imgn = 1.0;
 	color = 0x000aaa;
+	// min_real = -1.5;
+	// max_real = 0.7;
+	// min_imgn = -1.0;
+	// max_imgn = 1.0;
+
+	// min_real = -0.2;
+	// max_real = 0.8;
+	// min_imgn = -0.1;
+	// max_imgn = 1.0;
+
+	min_real = 0.2;
+	max_real = 1.2;
+	min_imgn = -0.05;
+	max_imgn = 0.95;
+
 
 	// For each iteration ...
 //	while (maxN < 10)
