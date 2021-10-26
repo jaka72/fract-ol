@@ -24,14 +24,18 @@ endif
 
 
 ifeq ($(BONNUS),0)
-	C_MAIN = indigo_code_example.c
+	C_MAIN = fractol_main.c
 else
 	C_MAIN = 
 endif
 
 C_BONUS			=	
 					
-C_COMMON		=	my_pixel_put.c \
+C_COMMON		=	calculate_mandelbrot.c \
+					draw_image.c \
+					get_resol_and_init_mlx.c \
+					zoom.c \
+					my_pixel_put.c \
 					fractol_utils.c \
 					get_color.c \
 					keys.c

@@ -6,25 +6,24 @@
 /*   By: jaka <jaka@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/22 17:43:06 by jaka          #+#    #+#                 */
-/*   Updated: 2021/10/22 17:47:47 by jaka          ########   odam.nl         */
+/*   Updated: 2021/10/26 16:40:50 by jmurovec      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	get_color(int r, int g, int b)
+int	get_color(t_window *w)
 {
-	int color;
-	if (r < 0)
-		r = (r - 0xffffff00) * 0x10000;
+	if (w->color.r < 0)
+		w->color.r = (w->color.r - 0xffffff00) * 0x10000;
 	else
-		r = r * 0x10000;
-	if (g < 0)
-		g = (g - 0xffffff00) * 0x100;
+		w->color.r = w->color.r * 0x10000;
+	if (w->color.g < 0)
+		w->color.g = (w->color.g - 0xffffff00) * 0x100;
 	else
-		g = g * 0x100;
-	if (b < 0)
-		b = b - 0xffffff00;
-	color = r + b + g;
-	return (color);
+		w->color.g = w->color.g * 0x100;
+	if (w->color.b < 0)
+		w->color.b = w->color.b - 0xffffff00;
+	w->color.color = w->color.r + w->color.b + w->color.g;
+	return (0);
 }
