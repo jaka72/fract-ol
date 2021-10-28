@@ -35,6 +35,7 @@ C_COMMON		=	calculate_mandelbrot.c \
 					draw_image.c \
 					get_resol_and_init_mlx.c \
 					zoom.c \
+					move_plane.c \
 					my_pixel_put.c \
 					fractol_utils.c \
 					get_color.c \

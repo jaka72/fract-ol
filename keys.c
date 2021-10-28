@@ -6,7 +6,7 @@
 /*   By: jaka <jaka@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 15:16:11 by jmurovec      #+#    #+#                 */
-/*   Updated: 2021/10/26 18:47:30 by jmurovec      ########   odam.nl         */
+/*   Updated: 2021/10/28 12:22:38 by jmurovec      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,61 +17,69 @@ void	init_keys(t_window *window)
 {
 	// window->key[0] = FALSE;
 	// window->key[1] = FALSE;
-	window->key[2] = FALSE;		// forward
-	window->key[3] = FALSE;		// backward
-	// window->key[4] = FALSE;
-	// window->key[5] = FALSE;
+	//window->key[2] = FALSE;		// forward
+	//window->key[3] = FALSE;		// backward
+	window->key[4] = FALSE;
+	window->key[5] = FALSE;
 }
 
- void	choose_keys(t_window *window)
+void	define_keys(t_window *window)
 {
 	if (SYSTEM == 'l')
 	{
-		window->keys.s = 's';
-		window->keys.w = 'w';
+//		window->keys.s = 's';
+//		window->keys.w = 'w';
 //		window->keys.d = 'd';
 //		window->keys.a = 'a';
-//		window->keys.arrow_left = 65361;
-//		window->keys.arrow_right = 65363;
-		window->keys.esc = 65307; // can replace ESC_KEY 
+		window->keys.arrow_up = 126;  // ??
+		window->keys.arrow_down = 125; // ??
+		window->keys.esc = ESC_KEY; // can replace ESC_KEY , 65307
 	}
 	else if (SYSTEM == 'a')
 	{
-		window->keys.w = 13;
-		window->keys.s = 1;
-//		window->keys.d = 2;
-//		window->keys.a = 0;
+		window->keys.arrow_up = 126;
+		window->keys.arrow_down = 125;
+		window->keys.d = 2;
+		window->keys.a = 0;
 //		window->keys.arrow_left = 123;
 //		window->keys.arrow_right = 124;
-		window->keys.esc = 53;  // can replace ESC_KEY 
+		window->keys.esc = ESC_KEY;  // can replace ESC_KEY 
 	}
 }
 
+
+// arrow up 126, arrow down 125
 int	key_press(int key, t_window *window)
 {
 	printf("key_press: [%d] \n", key);
-	// if (key == window->keys.d)
-	// 	window->key[RIGHT] = TRUE;
-	// if (key == window->keys.a)
-	// 	window->key[LEFT] = TRUE;
-	if (key == window->keys.w) // 13
+
+	if (key == window->keys.arrow_up) // 126
 	{
-		printf("   from key_press w: [%d] \n", key);
-		window->key[FORW] = TRUE;
+		printf("   from key_press arrow_up: [%d] \n\n", key);
+//		window->key[ZOOM_IN] = TRUE;
 		zoom_in(window);
 	}
-	if (key == window->keys.s)  // 1
+
+	if (key == window->keys.arrow_down)  // 125
 	{
-		printf("    from key_press s: [%d] \n", key);
-		window->key[BACKW] = TRUE;
+		printf("    from key_press arrow_down: [%d] \n\n", key);
 		zoom_out(window);
 	}
-	// if (key == window->keys.arrow_left)
-	// 	window->key[ROT_LEFT] = TRUE;
-	// if (key == window->keys.arrow_right)
-	// 	window->key[ROT_RIGHT] = TRUE;
-//	if (key == window->keys.esc)		NOT WORKING !!!!
-	if (key == ESC_KEY)  //ESC
+
+	if (key == window->keys.a)  // 'a'
+	{
+		printf("    from key_press arrow_down: [%d] \n\n", key);
+		move_left(window);
+	}
+	if (key == window->keys.d)  // 'a'
+	{
+		printf("    from key_press arrow_down: [%d] \n\n", key);
+		move_right(window);
+	}
+
+
+
+	if (key == ESC_KEY)  // ESC
 	{
 		printf("From key_press ESC\n");
 		close_and_free(window);
@@ -85,10 +93,10 @@ int	key_release(int key, t_window *window)
 	// 	window->key[RIGHT] = FALSE;
 	// if (key == window->keys.a)
 	// 	window->key[LEFT] = FALSE;
-	if (key == window->keys.w)
-	 	window->key[FORW] = FALSE;
-	if (key == window->keys.s)
-	 	window->key[BACKW] = FALSE;
+	if (key == window->keys.arrow_up)
+	 	window->key[ZOOM_IN] = FALSE;
+	if (key == window->keys.arrow_down)
+	 	window->key[ZOOM_OUT] = FALSE;
 	// if (key == window->keys.arrow_left)
 	// 	window->key[ROT_LEFT] = FALSE;
 	// if (key == window->keys.arrow_right)

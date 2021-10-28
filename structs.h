@@ -6,7 +6,7 @@
 /*   By: jmurovec <jmurovec@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/20 15:18:07 by jmurovec      #+#    #+#                 */
-/*   Updated: 2021/10/26 17:29:10 by jmurovec      ########   odam.nl         */
+/*   Updated: 2021/10/28 12:22:31 by jmurovec      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,12 @@ typedef struct s_keys
 {
 //	int	arrow_right;
 //	int	arrow_left;
-	int	w;
-	int	s;
-//	int	a;
-//	int	d;
+//	int	w;
+//	int	s;
+	int	a;
+	int	d;
+	int	arrow_up;
+	int	arrow_down;
 	int	esc;
 }	t_keys;
 

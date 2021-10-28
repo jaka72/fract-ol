@@ -6,7 +6,7 @@
 /*   By: jmurovec <jmurovec@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/26 16:57:25 by jmurovec      #+#    #+#                 */
-/*   Updated: 2021/10/26 19:10:03 by jmurovec      ########   odam.nl         */
+/*   Updated: 2021/10/27 17:28:53 by jmurovec      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,8 @@ void	get_resol_and_init_mlx(t_window *window)
 	window->img = mlx_new_image(window->mlx, window->width, window->height);
 	window->addr = mlx_get_data_addr(window->img, &window->bits_per_pixel,
 			&window->line_length, &window->endian);
+
+
+	printf("get_resol, height %d\n", window->image.height);
+
 }

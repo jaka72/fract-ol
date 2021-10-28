@@ -6,7 +6,7 @@
 /*   By: jaka <jaka@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/17 13:44:49 by jaka          #+#    #+#                 */
-/*   Updated: 2021/10/26 18:56:44 by jmurovec      ########   odam.nl         */
+/*   Updated: 2021/10/28 12:23:32 by jmurovec      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@
 
 // 0[d], 1[a], 2[w], 3[s], 4[<--], 5[-->]
 //# define RIGHT 0
-//# define LEFT 1
-# define FORW 2
-# define BACKW 3
-//# define ROT_LEFT 4
-//# define ROT_RIGHT 5
+# define LEFT 1
+//# define FORW 2
+//# define BACKW 3
+# define ZOOM_IN 4
+# define ZOOM_OUT 5
 
 
 void	init_keys(t_window *window);
-void	choose_keys(t_window *window);
+void	define_keys(t_window *window);
 int		key_press(int key, t_window *window);
 int		key_release(int key, t_window *window);
 int		exit_cross(t_window *window);
@@ -68,12 +68,15 @@ int     draw_image(t_window *w);
 int     find_mandelbrot(t_window *w/*double c_real, double c_imgn, int max_iterations*/);
 int	    zoom_in(t_window *w);
 int	    zoom_out(t_window *w);
+int     move_left(t_window *w);
+int	    move_right(t_window *w);
 
 
-int	key_forward(int keycode, t_window *w);
+int     key_forward(int keycode, t_window *w);
 
 void	get_resol_and_init_mlx(t_window *window);
-int		get_color(t_window *window);
+int		choose_color(t_window *window);
+int		calculate_color(t_window *window);
 void	my_pixel_put(t_window *window, int x, int y, int color);
 
 
