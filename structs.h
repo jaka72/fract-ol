@@ -6,50 +6,34 @@
 /*   By: jmurovec <jmurovec@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/20 15:18:07 by jmurovec      #+#    #+#                 */
-/*   Updated: 2021/10/28 12:22:31 by jmurovec      ########   odam.nl         */
+/*   Updated: 2021/12/01 14:49:58 by jmurovec      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-// typedef struct s_texx
-// {
-// 	void			*mlx;
-// 	void			*img;
-// 	char			*addr;
-// 	int				endian;
-// 	int				line_length;
-// 	int				bits_per_pixel;
-// 	int				x;
-// 	int				rows;
-// 	int				cols;
-// 	int				cpc;
-// 	int				i;
-// 	unsigned int	*map;
-// }	t_texx;
-
-// typedef struct s_textures
-// {
-// 	t_texx	ea;
-// 	t_texx	we;
-// 	t_texx	no;
-// 	t_texx	so;
-// 	t_texx	sky;
-// 	t_texx	sprite;
-// }	t_textures;
+struct s_mouse_temp
+{
+	float	x;
+	float	y;
+} t_mouse_temp;
 
 typedef struct s_keys
 {
-//	int	arrow_right;
-//	int	arrow_left;
-//	int	w;
-//	int	s;
-	int	a;
-	int	d;
 	int	arrow_up;
 	int	arrow_down;
+	int	arrow_left;
+	int	arrow_right;
+	int	i;
+	int	o;
 	int	esc;
+	int	col_scheme_1;
+	int	col_scheme_2;
+	int	col_scheme_3;
+	int	col_scheme_4;
+	int	increase_iter;
+	int	decrease_iter;
 }	t_keys;
 
 typedef struct s_ranges
@@ -58,12 +42,13 @@ typedef struct s_ranges
 	double	max_real;
 	double	min_imgn;
 	double	max_imgn;
+	double	step_real;
+	double	step_imgn;
 	double	c_real;
 	double	c_imgn;
 	int		max_iterations;
 	int		nr_iterations;
-} t_range;
-
+}	t_range;
 
 typedef struct s_colors
 {
@@ -71,14 +56,14 @@ typedef struct s_colors
 	int		g;
 	int		b;
 	int		color;
-} t_colors;
+	int		*arr_colors;
+}	t_colors;
 
 typedef struct s_image
 {
 	int	width;
 	int	height;
-} t_image;
-
+}	t_image;
 
 typedef struct s_windows
 {
@@ -97,6 +82,15 @@ typedef struct s_windows
 	t_colors	color;
 	t_image		image;
 	int			temp;
+	int			is_julia;
+	double		julia_real;
+	double		julia_start_c_real;
+	double		julia_start_c_imgn;
+	double		julia_imgn;
+	double		move_julia_real;
+	double		move_julia_imgn;
+	void		(*draw_image)();
+	int			(*color_scheme)();
 }	t_window;
 
 #endif

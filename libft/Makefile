@@ -1,6 +1,7 @@
 NAME 			=	libft.a
 
-C_FILES 		=	ft_isdigit.c \
+C_FILES 		=	ft_atof.c \
+					ft_isdigit.c \
 					ft_ischar.c \
 					ft_isalnum.c \
 					ft_isalnum_hex.c \
@@ -8,6 +9,7 @@ C_FILES 		=	ft_isdigit.c \
 					ft_substr.c \
 					ft_strlen.c \
 					ft_strncmp.c \
+					ft_strcmp.c \
 					ft_make_hex.c
 
 

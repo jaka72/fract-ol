@@ -15,8 +15,11 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h> // to be removed
 
+double	ft_atof(const char *str, int i);
 int		ft_isdigit(int n);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
 int		ft_ischar(int c);
 int		ft_isalnum_hex(char c);

@@ -6,7 +6,7 @@
 /*   By: jaka <jaka@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/17 13:44:49 by jaka          #+#    #+#                 */
-/*   Updated: 2021/10/28 12:23:32 by jmurovec      ########   odam.nl         */
+/*   Updated: 2021/12/05 11:37:28 by jmurovec      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@
 # include <fcntl.h>
 # include <math.h>
 # include "./mlx_linux/mlx.h"
-
 # include "./structs.h"
 # include "./libft/libft.h"
-
 
 # ifdef __linux__
 #  define SYSTEM 'l'
@@ -34,53 +32,56 @@
 #  define SYSTEM 'a'
 #  define RED_CROSS_CODE 17
 #  define ESC_KEY 53
-
 #  include <CoreGraphics/CGDisplayConfiguration.h>
 # endif
-
 
 # define TRUE 1
 # define FALSE 0
 
-
-
 // 0[d], 1[a], 2[w], 3[s], 4[<--], 5[-->]
-//# define RIGHT 0
+# define RIGHT 0
 # define LEFT 1
-//# define FORW 2
-//# define BACKW 3
+# define UP 2
+# define DOWN 3
 # define ZOOM_IN 4
 # define ZOOM_OUT 5
 
-
-void	init_keys(t_window *window);
+void	print_usage_and_exit(void);
 void	define_keys(t_window *window);
+void	init_keys(t_window *window);
 int		key_press(int key, t_window *window);
 int		key_release(int key, t_window *window);
 int		exit_cross(t_window *window);
 int		error(int n, char *msg);
-int		error_close_fd(int n, int fd, char *msg);
 int		close_and_free(t_window *window);
-
-double	get_real(int x, t_window *w);
-double	get_imgn(int y, t_window *w);
-int     draw_image(t_window *w);
-int     find_mandelbrot(t_window *w/*double c_real, double c_imgn, int max_iterations*/);
-int	    zoom_in(t_window *w);
-int	    zoom_out(t_window *w);
-int     move_left(t_window *w);
-int	    move_right(t_window *w);
-
-
-int     key_forward(int keycode, t_window *w);
-
 void	get_resol_and_init_mlx(t_window *window);
-int		choose_color(t_window *window);
-int		calculate_color(t_window *window);
+
+void	draw_image(t_window *w);
+void	draw_image_mandelbrot(t_window *w);
+void	draw_image_julia(t_window *w);
+void	draw_image_burningship(t_window *w);
+int		zoom_in(t_window *w);
+int		zoom_out(t_window *w);
+int		mouse(int mouse, int x, int y, t_window *w);
 void	my_pixel_put(t_window *window, int x, int y, int color);
+int		render(t_window *w);
 
+int		move_left(t_window *w);
+int		move_right(t_window *w);
+int		move_up(t_window *w);
+int		move_down(t_window *w);
 
-//void	print_map_info(t_window *window);
+int		move_left_julia(t_window *w);
+int		move_right_julia(t_window *w);
+int		move_up_julia(t_window *w);
+int		move_down_julia(t_window *w);
+
+int		color_schemes(int key, t_window *w);
+int		color_scheme_zebra(t_window *w);
+int		color_scheme_orange(t_window *w);
+int		color_scheme_mix(t_window *w);
+//int		color_scheme_gradient(t_window *w);
+int		change_max_iterations(int key, t_window *w);
 
 # define BLKB  "\e[40m"
 # define HYEL  "\e[0;93m"

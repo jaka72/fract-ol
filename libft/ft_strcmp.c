@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   my_pixel_put.c                                     :+:    :+:            */
+/*   ft_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jaka <jaka@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/09/03 12:21:29 by jmurovec      #+#    #+#                 */
-/*   Updated: 2021/11/15 17:19:23 by jmurovec      ########   odam.nl         */
+/*   Created: 2021/10/30 13:38:45 by jaka          #+#    #+#                 */
+/*   Updated: 2021/11/17 12:44:29 by jmurovec      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void	my_pixel_put(t_window *window, int x, int y, int color)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	char	*dst;
-	int		offset;
+	int				i;
+	unsigned char	s1_letter;
+	unsigned char	s2_letter;
 
-	offset = y * window->line_length + x * (window->bits_per_pixel / 8);
-	dst = window->addr + offset;
-	*(unsigned int *)dst = color;
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	s1_letter = (unsigned char)s1[i];
+	s2_letter = (unsigned char)s2[i];
+	return (s1_letter - s2_letter);
 }

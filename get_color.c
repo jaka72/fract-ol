@@ -6,52 +6,68 @@
 /*   By: jaka <jaka@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/22 17:43:06 by jaka          #+#    #+#                 */
-/*   Updated: 2021/10/27 17:33:23 by jmurovec      ########   odam.nl         */
+/*   Updated: 2021/12/05 11:37:28 by jmurovec      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	choose_color(t_window *w)
+// Alternating black and white
+int	color_scheme_zebra(t_window *w)
 {
-	if (w->range.nr_iterations == 1)		// white
+	if (w->range.nr_iterations % 2 == 0)
 		w->color.color = 0xffffff;
-	else if (w->range.nr_iterations == 2)	// red
-		w->color.color = 0xcc0000;
-	else if (w->range.nr_iterations == 3)	// blue
-		w->color.color = 0x0000cc;
-	else if (w->range.nr_iterations == 4)	// orange
-		w->color.color = 0xff6600;
-	else if (w->range.nr_iterations == 5)	// violet
-		w->color.color = 0x9900cc;
-	else if (w->range.nr_iterations == 6)	// yellow
-		w->color.color = 0xffcc00;
-	else if (w->range.nr_iterations == 7)	// green
-		w->color.color = 0x006600;
-	else if (w->range.nr_iterations == 8)	// pink
-		w->color.color = 0xff0066;
-	else if (w->range.nr_iterations == 9)	// light blue
-		w->color.color = 0xff0066;
-	else if (w->range.nr_iterations == 10)	// light green
-		w->color.color = 0x99ff66;
 	else
-		w->color.color = 0x909090;
+		w->color.color = 0x111111;
 	return (0);
 }
 
-
-int	calculate_color(t_window *w)
+int	color_scheme_orange(t_window *w)
 {
-	if (w->color.r < 0)
-		w->color.r = (w->color.r - 0xffffff00) * 0x10000;
-	else
-		w->color.r = w->color.r * 0x10000;
-	if (w->color.g < 0)
-		w->color.g = (w->color.g - 0xffffff00) * 0x100;
-	else
-		w->color.g = w->color.g * 0x100;
-	if (w->color.b < 0)
-		w->color.b = w->color.b - 0xffffff00;
-	w->color.color = w->color.r + w->color.b + w->color.g;
+	if (w->range.nr_iterations % 10 == 0)
+		w->color.color = 0xffff00;
+	else if (w->range.nr_iterations % 10 == 1)
+		w->color.color = 0x8b0000;
+	else if (w->range.nr_iterations % 10 == 2)
+		w->color.color = 0xFF4500;
+	else if (w->range.nr_iterations % 10 == 3)
+		w->color.color = 0xFF6347;
+	else if (w->range.nr_iterations % 10 == 4)
+		w->color.color = 0xE26310;
+	else if (w->range.nr_iterations % 10 == 5)
+		w->color.color = 0xF5761A;
+	else if (w->range.nr_iterations % 10 == 6)
+		w->color.color = 0xFD673A;
+	else if (w->range.nr_iterations % 10 == 7)
+		w->color.color = 0xFFA836;
+	else if (w->range.nr_iterations % 10 == 8)
+		w->color.color = 0xED9121;
+	else if (w->range.nr_iterations % 10 == 9)
+		w->color.color = 0xFF4F00;
+	return (0);
+}
+
+int	color_scheme_mix(t_window *w)
+{
+	if (w->range.nr_iterations % 10 == 0)
+		w->color.color = 0xffffff;
+	else if (w->range.nr_iterations % 10 == 1)
+		w->color.color = 0x646496;
+	else if (w->range.nr_iterations % 10 == 2)
+		w->color.color = 0xcc0000;
+	else if (w->range.nr_iterations % 10 == 3)
+		w->color.color = 0x0000cc;
+	else if (w->range.nr_iterations % 10 == 4)
+		w->color.color = 0xff6600;
+	else if (w->range.nr_iterations % 10 == 5)
+		w->color.color = 0x9900cc;
+	else if (w->range.nr_iterations % 10 == 6)
+		w->color.color = 0xffcc00;
+	else if (w->range.nr_iterations % 10 == 7)
+		w->color.color = 0x006600;
+	else if (w->range.nr_iterations % 10 == 8)
+		w->color.color = 0xff0066;
+	else if (w->range.nr_iterations % 10 == 9)
+		w->color.color = 0xff0066;
 	return (0);
 }

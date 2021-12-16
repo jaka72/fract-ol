@@ -220,13 +220,13 @@ int	main()
 	
 
 
-	sleep(10);
+	sleep(3);
 
 	printf(" => Put xpm ...");
 	mlx_put_image_to_window(mlx,win1,im2,0,0);
 	mlx_put_image_to_window(mlx,win1,im2,100,100);
 	printf("OK\n");
-	sleep(4);
+	sleep(3);
 						///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	printf(" => MAKING 2nd WINDOW ...");													// SECOND WINDOW
 	win2 = mlx_new_window(mlx, WIN1_SX, WIN1_SY, "WINDOW 2");
@@ -240,13 +240,13 @@ int	main()
 
 	printf(" MAKING 3rd WINDOW, Installing hooks ...");
 	win3 = mlx_new_window(mlx, WIN1_SX, WIN1_SY, "WINDOW 3");
-	mlx_expose_hook(win1, expose_win1, 0);
-	mlx_mouse_hook(win1, mouse_win1, 0);
-	mlx_key_hook(win1, key_win1, 0);
-	mlx_expose_hook(win2, expose_win2, 0);
-	mlx_mouse_hook(win2, mouse_win2, 0);
-	mlx_key_hook(win2, key_win2, 0);
-	mlx_key_hook(win3, key_win3, 0);
+//	mlx_expose_hook(win1, expose_win1, 0);
+//	mlx_mouse_hook(win1, mouse_win1, 0);
+//	mlx_key_hook(win1, key_win1, 0);
+//	mlx_expose_hook(win2, expose_win2, 0);
+//	mlx_mouse_hook(win2, mouse_win2, 0);
+//	mlx_key_hook(win2, key_win2, 0);
+//	mlx_key_hook(win3, key_win3, 0);
 
 	mlx_hook(win3, MotionNotify, PointerMotionMask, mouse_win3, 0);
 
